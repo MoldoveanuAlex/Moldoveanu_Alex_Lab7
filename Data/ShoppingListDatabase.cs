@@ -20,8 +20,24 @@ namespace Moldoveanu_Alex_Lab7.Data
             _database.CreateTableAsync<ListProduct>().Wait();
         }
 
-        public Task<List<ShopList>> GetShopListsAsync() { return _database.Table<ShopList>().ToListAsync(); }
-        public Task<ShopList> GetShopListAsync(int id) { return _database.Table<ShopList>().Where(i => i.ID == id).FirstOrDefaultAsync(); }
+        public Task<int> DeleteListProductAsync (ListProduct listp)
+        {
+            return _database.DeleteAsync(listp);
+        }
+
+        public Task<List<ListProduct>> GetListProducts()
+        {
+            return _database.QueryAsync<ListProduct>("select * from ListProduct");
+        }
+
+        public Task<List<ShopList>> GetShopListsAsync() 
+        { 
+            return _database.Table<ShopList>().ToListAsync(); 
+        }
+        public Task<ShopList> GetShopListAsync(int id) 
+        { 
+            return _database.Table<ShopList>().Where(i => i.ID == id).FirstOrDefaultAsync(); 
+        }
         public Task<int> SaveShopListAsync(ShopList slist)
         {
             if (slist.ID != 0)

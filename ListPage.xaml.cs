@@ -31,9 +31,21 @@ public partial class ListPage : ContentPage
 		});
     }
 
-	async void DelButton(object sender, EventArgs e)
+	async void OnDeleteItemButtonClicked(object sender, EventArgs e)
 	{
-        
+		Product product;
+		var shopList = (ShopList)BindingContext;
+		if(listView.SelectedItem != null)
+		{
+			product = listView.SelectedItem as Product;
+
+			var listProductAll = await App.Database.GetListProducts();
+
+			var listproduct = listProductAll.FindAll(x => x.ProductID == product.ID & x.ShopListID == shopList.ID);
+
+			await App.Database.DeleteListProductAsync(listproduct.FirstOrDefault());
+			await Navigation.PopAsync();
+		}
     }
 
 

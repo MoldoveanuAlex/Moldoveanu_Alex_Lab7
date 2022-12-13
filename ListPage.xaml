@@ -32,7 +32,7 @@
                 Clicked="OnChooseButtonClicked" />
 
             <Button Text="Delete item" MaximumWidthRequest="300"
-                    Clicked="DelButton"/>
+                    Clicked="OnDeleteItemButtonClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
