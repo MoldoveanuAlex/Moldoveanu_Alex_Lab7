@@ -109,7 +109,10 @@ namespace Moldoveanu_Alex_Lab7.Data
             } 
         }
 
-
+        public Task<int> DeleteShopAsync(Shop shop)
+        {
+            return _database.DeleteAsync(shop);
+        }
 
     }
 }

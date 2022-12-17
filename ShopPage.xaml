@@ -27,7 +27,10 @@
                         MaximumWidthRequest="200" 
                         Clicked="OnShowMapButtonClicked">
                 </Button>
+                
             </Grid>
+            <Button Text="Delete shop" MaximumWidthRequest="200"
+                    Clicked="OnDeleteButtonClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,5 +1,5 @@
 namespace Moldoveanu_Alex_Lab7;
-
+using Moldoveanu_Alex_Lab7.Data;
 using Android.App;
 using Android.Net.Wifi;
 using Moldoveanu_Alex_Lab7.Models;
@@ -49,5 +49,12 @@ public partial class ShopPage : ContentPage
         }
 
         await Map.OpenAsync(location, options);
+    }
+
+    async void OnDeleteButtonClicked(object sender, EventArgs e)
+    {
+        var slist = (Shop)BindingContext;
+        await App.Database.DeleteShopAsync(slist);
+        await Navigation.PopAsync();
     }
 }
